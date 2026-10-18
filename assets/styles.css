@@ -162,42 +162,31 @@ a:hover {
 .resume {
   max-width: var(--max);
   margin: 28px auto 40px;
-  padding: 46px 52px 42px;
+  padding: 44px 54px 40px;
   background: var(--paper);
-  border: 1px solid #e6e9ec;
-  border-radius: var(--radius);
-  box-shadow: 0 18px 40px -24px rgba(23, 50, 74, 0.3);
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+  box-shadow: 0 18px 40px -28px rgba(23, 50, 74, 0.35);
 }
 
-.identity-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 28px;
-}
-
-.identity-text {
-  min-width: 0;
-}
-
-.identity .contact:first-of-type {
-  margin-top: 16px;
+.identity {
+  text-align: center;
 }
 
 .name {
-  margin: 0 0 8px;
-  font-size: clamp(28px, 4vw, 36px);
+  margin: 0 0 6px;
+  font-size: clamp(27px, 3.6vw, 34px);
   font-weight: 750;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--navy);
 }
 
 .role {
-  margin: 0 0 16px;
-  font-size: 13px;
+  margin: 0 0 12px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -205,7 +194,8 @@ a:hover {
 .contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px 0;
+  justify-content: center;
+  gap: 2px 0;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -222,14 +212,9 @@ a:hover {
 }
 
 .contact li + li::before {
-  content: "\00b7";
+  content: "|";
   margin: 0 9px;
-  color: #aab3bb;
-}
-
-.contact + .contact {
-  margin-top: 2px;
-  font-size: 12.5px;
+  color: #b6bdc4;
 }
 
 .contact a {
@@ -242,36 +227,25 @@ a:hover {
   text-decoration: underline;
 }
 
-.photo {
-  flex: none;
-  width: 96px;
-  height: 122px;
-  object-fit: cover;
-  object-position: 50% 45%;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  filter: saturate(0.95);
-}
-
 .section {
-  margin-top: 26px;
+  margin-top: 22px;
 }
 
 .section h2 {
-  margin: 0 0 12px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid var(--line);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  margin: 0 0 9px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #c3cbd2;
+  font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--navy);
 }
 
 .section p {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 13.8px;
+  line-height: 1.55;
 }
 
 .entry + .entry {
@@ -347,6 +321,42 @@ a:hover {
   font-weight: 650;
 }
 
+.cert-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cert-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 4px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.cert-list li:last-child {
+  margin-bottom: 0;
+}
+
+.cert-text {
+  min-width: 0;
+}
+
+.cert-list strong {
+  font-weight: 650;
+}
+
+.cert-meta {
+  flex: none;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
 .course-list {
   margin: 0;
   padding-left: 18px;
@@ -380,12 +390,12 @@ a:hover {
   text-decoration: underline;
 }
 
-.course-list a.credential {
+.credential {
   color: inherit;
-  font-size: inherit;
+  text-decoration: none;
 }
 
-.course-list a.credential strong {
+.credential strong {
   text-decoration: underline;
   text-decoration-color: var(--accent);
   text-underline-offset: 2px;
@@ -438,24 +448,11 @@ a:hover {
   .resume {
     margin: 16px 12px 28px;
     padding: 28px 22px;
-    border-radius: 12px;
-  }
-
-  .identity-top {
-    gap: 18px;
-  }
-
-  .identity .contact:first-of-type {
-    margin-top: 14px;
+    border-radius: 8px;
   }
 
   .name {
     font-size: 27px;
-  }
-
-  .photo {
-    width: 78px;
-    height: 100px;
   }
 
   .contact {
@@ -485,23 +482,23 @@ a:hover {
     display: none;
   }
 
-  .contact + .contact {
+  .contact li + li {
     margin-top: 2px;
+  }
+
+  .cert-list li {
+    flex-direction: column;
+    gap: 1px;
   }
 }
 
 @media (max-width: 420px) {
-  .photo {
-    width: 66px;
-    height: 86px;
-  }
-
   .name {
     font-size: 24px;
   }
 
   .role {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     font-size: 11.5px;
   }
 }
@@ -509,7 +506,7 @@ a:hover {
 @media print {
   @page {
     size: A4;
-    margin: 8mm 12mm;
+    margin: 10mm 12mm;
   }
 
   html,
@@ -537,23 +534,13 @@ a:hover {
   }
 
   .name {
-    font-size: 26pt;
+    font-size: 22pt;
   }
 
   .role {
-    margin-bottom: 10px;
-    font-size: 9.2pt;
-    letter-spacing: 0.06em;
-  }
-
-  .photo {
-    width: 22mm;
-    height: 28mm;
-    border-radius: 2mm;
-  }
-
-  .identity .contact:first-of-type {
-    margin-top: 6px;
+    margin-bottom: 7px;
+    font-size: 8.8pt;
+    letter-spacing: 0;
   }
 
   .contact {
@@ -561,36 +548,39 @@ a:hover {
     line-height: 1.4;
   }
 
-  .contact + .contact {
-    margin-top: 1px;
-    font-size: 8.6pt;
+  .contact li + li::before {
+    margin: 0 7px;
   }
 
   .section {
-    margin-top: 7px;
+    margin-top: 4px;
+  }
+
+  .section:last-child {
+    margin-top: 3px;
   }
 
   .section h2 {
-    margin-bottom: 3px;
-    padding-bottom: 2px;
-    font-size: 8.3pt;
-    letter-spacing: 0.02em;
+    margin-bottom: 2.5px;
+    padding-bottom: 1px;
+    font-size: 9pt;
+    letter-spacing: 0.05em;
   }
 
   .section p,
   .bullets li,
   .skill-list li {
     font-size: 9.2pt;
-    line-height: 1.33;
+    line-height: 1.31;
   }
 
   .entry + .entry {
-    margin-top: 6px;
+    margin-top: 4px;
   }
 
   .entry-title,
   .award-title {
-    font-size: 10pt;
+    font-size: 10.2pt;
   }
 
   .entry-sub,
@@ -608,10 +598,15 @@ a:hover {
     margin-bottom: 1px;
   }
 
-  .course-list li {
+  .course-list li,
+  .cert-list li {
+    font-size: 8.9pt;
+    line-height: 1.28;
+    margin-bottom: 1px;
+  }
+
+  .cert-meta {
     font-size: 8.6pt;
-    line-height: 1.27;
-    margin-bottom: 2px;
   }
 
   .skill-list {
@@ -623,7 +618,7 @@ a:hover {
     text-decoration: none;
   }
 
-  .course-list a.credential strong {
+  .credential strong {
     text-decoration: none;
   }
 
