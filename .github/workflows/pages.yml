@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Assemble site
         run: |
@@ -63,10 +63,11 @@ jobs:
             fi
           done
 
+      # Requires Pages to be enabled once in Settings → Pages → Source: GitHub Actions.
+      # GITHUB_TOKEN cannot create the Pages site (needs repo admin), so enablement
+      # is deliberately not set here.
       - name: Setup Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
