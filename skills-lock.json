@@ -43,6 +43,12 @@
       "skillPath": "skills/executive-resume-writer/SKILL.md",
       "computedHash": "4c8c519df4a69f2078ef14c354707754de4e28a73ddb5eb1032c88f2fd2201fe"
     },
+    "humanizer": {
+      "source": "blader/humanizer",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "d85c4727f62296887c3206e32a99caeed7611af7c4701c1b9931897260e31a73"
+    },
     "interview-prep-generator": {
       "source": "Paramchoudhary/ResumeSkills",
       "sourceType": "github",
