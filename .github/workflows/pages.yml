@@ -1,0 +1,83 @@
+name: Deploy resume to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Assemble site
+        run: |
+          set -euo pipefail
+          mkdir -p _site/assets
+          cp index.html pt-br.html .nojekyll _site/
+          cp assets/styles.css assets/script.js assets/favicon.svg assets/victor-lucas.jpg _site/assets/
+          cp Victor-Lucas-Gomes-da-Silva-Resume-EN.pdf _site/
+          cp Victor-Lucas-Gomes-da-Silva-Curriculo-PT-BR.pdf _site/
+
+      - name: Verify published files
+        run: |
+          set -euo pipefail
+          required=(
+            _site/index.html
+            _site/pt-br.html
+            _site/assets/styles.css
+            _site/assets/victor-lucas.jpg
+            _site/Victor-Lucas-Gomes-da-Silva-Resume-EN.pdf
+            _site/Victor-Lucas-Gomes-da-Silva-Curriculo-PT-BR.pdf
+          )
+          for file in "${required[@]}"; do
+            if [ ! -s "$file" ]; then
+              echo "::error file=$file::Missing or empty file required by the site."
+              exit 1
+            fi
+          done
+
+          if ! command -v pdfinfo >/dev/null 2>&1; then
+            echo "pdfinfo not available; skipping page-count check."
+            exit 0
+          fi
+
+          for pdf in _site/*.pdf; do
+            pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
+            echo "$pdf: $pages page(s)"
+            if [ "$pages" != "1" ]; then
+              echo "::warning file=$pdf::$pdf has $pages pages; expected 1."
+            fi
+          done
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

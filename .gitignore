@@ -1,0 +1,11 @@
+# Personal documents — never publish these
+*.pdf
+.agents
+!Victor-Lucas-Gomes-da-Silva-Resume-EN.pdf
+!Victor-Lucas-Gomes-da-Silva-Curriculo-PT-BR.pdf
+
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+_site/
